@@ -1,7 +1,5 @@
 public class TemperatureConverter {
 
-     hint
-
     public static double convertTemperature(double temperature, String unit) {
         if (unit.equalsIgnoreCase("C")) {
             return (temperature * 9.0 / 5.0) + 32;
@@ -9,6 +7,7 @@ public class TemperatureConverter {
             return (temperature - 32) * 5.0 / 9.0;
         }
     }
+
 
      
 
@@ -23,11 +22,6 @@ public class TemperatureConverter {
             if (input.equalsIgnoreCase("stop")) {
                 running = false;
             } else {
-                boolean validNumber = true;
-                double temp = 0.0;
- 
-                // Validate numeric input without try/catch
-                // Check if input matches an optional leading minus followed by digits and optional decimal
                 boolean hasDigit = false;
                 boolean hasDot = false;
                 boolean valid = true;
@@ -66,7 +60,7 @@ public class TemperatureConverter {
                 if (!valid) {
                     System.out.println("Invalid temperature input. Please enter a numeric value.");
                 } else {
-                    temp = Double.parseDouble(input);
+                    double temp = Double.parseDouble(input);
  
                     System.out.print("Enter unit (C or F): ");
                     String unit = scanner.nextLine().trim().toUpperCase();
@@ -75,10 +69,9 @@ public class TemperatureConverter {
                         System.out.println("Invalid unit. Please enter C or F.");
                     } else {
                         double converted = convertTemperature(temp, unit);
-                        String fromUnit = unit;
                         String toUnit = unit.equals("C") ? "F" : "C";
-                        System.out.printf("%.2f°%s is equal to %.2f°%s%n",
-                                temp, fromUnit, converted, toUnit);
+                        System.out.printf("%.2f\u00B0%s is equal to %.2f\u00B0%s%n",
+                                temp, unit, converted, toUnit);
                     }
                 }
             }
@@ -87,4 +80,5 @@ public class TemperatureConverter {
         scanner.close();
     }
 }
+ 
  
